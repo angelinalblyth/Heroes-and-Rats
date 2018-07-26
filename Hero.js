@@ -19,7 +19,20 @@ Hero.prototype.eat = function (food) {
   if(this.favouriteFood === food.name){
     food.replenishmentLevel = food.replenishmentLevel * 1.5;
   }
+  if(food.poisonLevel > 0){
+    this.health -= food.poisonLevel
+  }
+  if(food.poisonLevel === 0){
   this.health += food.replenishmentLevel;
+  }
+
+
+
+  //
+  // if(this.favouriteFood === food.name){
+  //   food.replenishmentLevel = food.replenishmentLevel * 1.5;
+  // }
+  // this.health += food.replenishmentLevel;
 }
 
 Hero.prototype.addTask = function(task){
