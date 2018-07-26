@@ -16,23 +16,30 @@ Hero.prototype.looseHealth = function () {
 }
 
 Hero.prototype.eat = function (food) {
-  if(this.favouriteFood === food.name){
-    food.replenishmentLevel = food.replenishmentLevel * 1.5;
-  }
-  if(food.poisonLevel > 0){
-    this.health -= food.poisonLevel
-  }
-  if(food.poisonLevel === 0){
-  this.health += food.replenishmentLevel;
-  }
-
-
-
-  //
+  //method for MVP
   // if(this.favouriteFood === food.name){
   //   food.replenishmentLevel = food.replenishmentLevel * 1.5;
   // }
   // this.health += food.replenishmentLevel;
+
+  //Below works
+  // if(this.favouriteFood === food.name){
+  //   food.replenishmentLevel = food.replenishmentLevel * 1.5;
+  // }
+  // if(food.poisonLevel > 0){
+  //   this.health -= food.poisonLevel
+  // }
+  // if(food.poisonLevel === 0){
+  // this.health += food.replenishmentLevel;
+  // }
+
+  if(food.poisonLevel){
+    this.health -= food.poisonLevel
+  }else if(this.favouriteFood === food.name){
+    food.replenishmentLevel = food.replenishmentLevel * 1.5;
+  }else{
+    this.health += food.replenishmentLevel;
+  }
 }
 
 Hero.prototype.addTask = function(task){
